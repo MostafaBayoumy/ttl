@@ -20,4 +20,6 @@ public interface MatchRepository extends BaseRepository<Match, Integer> {
     List<Match> findByRoundNumberAndLeague_id(Byte roundNumber, Integer leagueId);
 
     long countByLeague_idAndRoundNumberAndWinnerIsNull(Integer leagueId, Byte roundNumber);
+
+    long countByRoundNumber(Byte roundNumber);
 }

@@ -85,12 +85,12 @@ CREATE TABLE IF NOT EXISTS `ttldb`.`matches` (
   `winner_id` INT(10) UNSIGNED NULL DEFAULT NULL,
   `result` VARCHAR(10) NULL DEFAULT NULL,
   `match_date` DATE NOT NULL,
-  `leagues_id` INT(10) UNSIGNED NOT NULL,
+  `league_id` INT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_matches_participants1_idx` (`first_participant_id` ASC),
   INDEX `fk_matches_participants2_idx` (`second_participant_id` ASC),
   INDEX `fk_matches_participants3_idx` (`winner_id` ASC),
-  INDEX `fk_matches_leagues1_idx` (`leagues_id` ASC),
+  INDEX `fk_matches_leagues1_idx` (`league_id` ASC),
   CONSTRAINT `fk_matches_participants1`
   FOREIGN KEY (`first_participant_id`)
   REFERENCES `ttldb`.`participants` (`id`)
@@ -107,16 +107,10 @@ CREATE TABLE IF NOT EXISTS `ttldb`.`matches` (
   ON DELETE NO ACTION
   ON UPDATE NO ACTION,
   CONSTRAINT `fk_matches_leagues1`
-  FOREIGN KEY (`leagues_id`)
+  FOREIGN KEY (`league_id`)
   REFERENCES `ttldb`.`leagues` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION)
   ENGINE = InnoDB
   AUTO_INCREMENT = 60
   DEFAULT CHARACTER SET = latin1;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-

@@ -8,10 +8,15 @@ import com.ttl.service.MatchService;
 import com.ttl.web.dto.MatchDto;
 import com.ttl.web.mapper.MatchMapper;
 import com.ttl.web.mapper.ParticipantMapper;
+import com.ttl.web.request.FirstRoundRequest;
 import com.ttl.web.response.SuccessResponse;
+import com.ttl.web.validation.FirstRoundRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -34,6 +39,14 @@ public class MatchController {
     @Autowired
     private ParticipantMapper participantMapper;
 
+    @Autowired
+    private FirstRoundRequestValidator firstRoundRequestValidator;
+
+    @InitBinder("firstRoundRequest")
+    public void initValidators(WebDataBinder binder) {
+        binder.addValidators(firstRoundRequestValidator);
+    }
+
     @PostMapping(value = "/save")
     public SuccessResponse<MatchDto> save(@RequestBody MatchDto matchDto) throws BusinessException {
         Match match = matchMapper.unMap(matchDto);
@@ -42,10 +55,10 @@ public class MatchController {
         return new SuccessResponse<MatchDto>(matchDto);
     }
 
-    @PostMapping(value = "/league/{leagueId}/first-round")
-    public SuccessResponse<List<MatchDto>> createFirstRound(@PathVariable(name="leagueId") Integer leagueId) throws BusinessException {
-        List<ParticipantGroup> participantGroups = leagueParticipantService.groupParticipantRandomly(leagueId);
-        List<Match> matches = matchService.createFirstRoundMatches(participantGroups, leagueId);
+    @PostMapping(value = "/first-round")
+    public SuccessResponse<List<MatchDto>> createFirstRound(@Valid @RequestBody FirstRoundRequest firstRoundRequest) throws BusinessException {
+        List<ParticipantGroup> participantGroups = leagueParticipantService.groupParticipantRandomly(firstRoundRequest.getLeague().getId());
+        List<Match> matches = matchService.createFirstRoundMatches(participantGroups, firstRoundRequest.getLeague().getId());
         List<MatchDto> matchDtos = matchMapper.mapList(matches);
         return new SuccessResponse<>(matchDtos);
     }

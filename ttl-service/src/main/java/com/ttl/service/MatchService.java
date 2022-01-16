@@ -18,5 +18,7 @@ public interface MatchService extends BaseService<Match, Integer> {
 
     Match update(Match match) throws BusinessException;
 
-    boolean closeRound(Integer leagueId, Byte roundNumber);
+    boolean closeRound(Integer leagueId, Byte roundNumber) throws BusinessException;
+
+    long getFirstRoundCount() throws BusinessException;
 }

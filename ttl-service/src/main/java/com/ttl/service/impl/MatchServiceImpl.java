@@ -69,12 +69,17 @@ public class MatchServiceImpl extends BaseServiceImpl<Match, Integer>
     }
 
     @Override
-    public boolean closeRound(Integer leagueId, Byte roundNumber) {
+    public boolean closeRound(Integer leagueId, Byte roundNumber) throws BusinessException {
         long count = matchRepository.countByLeague_idAndRoundNumberAndWinnerIsNull(leagueId, roundNumber);
         if(count > 0) {
             throw new BusinessException(ErrorMessages.CAN_NOT_CLOSE_ROUND.getErrorMessage());
         }
         return true;
+    }
+
+    @Override
+    public long getFirstRoundCount() throws BusinessException {
+        return matchRepository.countByRoundNumber((byte)1);
     }
 
     private Date createMatchDate(MatchDateCount matchDateCount){
