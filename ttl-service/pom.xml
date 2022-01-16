@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.ttl</groupId>
+    <artifactId>ttl</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.ttl.service</groupId>
+  <artifactId>ttl-service</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.ttl.model</groupId>
+  		<artifactId>ttl-model</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.ttl.repository</groupId>
+  		<artifactId>ttl-repository</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+
+      <!-- send email -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-mail</artifactId>
+      </dependency>
+  </dependencies>
+</project>

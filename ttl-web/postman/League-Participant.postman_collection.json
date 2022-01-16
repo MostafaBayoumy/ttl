@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "fa490eb3-9f1f-4cad-9232-3c9e11a197ae",
+		"name": "League-Participant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add-league-participant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":null,\n\t\"league\": {\"id\":1},\n\t\"participant\": {\"id\":null,\n\t\t\"name\":\"said said\",\n\t\t\"email\": \"saidsaid@gmail.com\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/ttl/league-participant/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ttl",
+						"league-participant",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-participants-by-league-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/ttl/league-participant/league/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ttl",
+						"league-participant",
+						"league",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "group-particiants-by-league-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/ttl/league-participant/league/1/group-participants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ttl",
+						"league-participant",
+						"league",
+						"1",
+						"group-participants"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

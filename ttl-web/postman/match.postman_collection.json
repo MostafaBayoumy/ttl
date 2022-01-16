@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "4df8daf1-8185-41f7-889f-dae6c32cdf9c",
+		"name": "match",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create-first-round-matches",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/ttl/match/league/1/first-round",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ttl",
+						"match",
+						"league",
+						"1",
+						"first-round"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-first-round-matches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/ttl/match/league/1/get-first-round-matches",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ttl",
+						"match",
+						"league",
+						"1",
+						"get-first-round-matches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-match-winner-and-result",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n            \"id\": 80,\n            \"firstParticipant\": {\n                \"id\": 6,\n                \"name\": \"Mostafa\",\n                \"email\": \"mostafabayomui@gmail.com\"\n            },\n            \"secondParticipant\": {\n                \"id\": 60,\n                \"name\": \"Walid Ahmed\",\n                \"email\": \"walidahmed@gmail.com\"\n            },\n            \"roundNumber\": 6,\n            \"winner\": {\"id\": 1},\n            \"result\": \"6-1\",\n            \"matchDate\": \"2022-05-16\",\n            \"league\": {\"id\": 1}\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/ttl/match/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ttl",
+						"match",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "close-round",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
